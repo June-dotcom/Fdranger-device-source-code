@@ -1,0 +1,23 @@
+<IfModule mod_mime.c>
+AddCharset utf-8 .html
+AddCharset utf-8 .json
+AddCharset utf-8 .css
+AddCharset utf-8 .js
+AddCharset utf-8 .svg
+AddEncoding gzip .gz
+</IfModule>
+<FilesMatch "(\.html|\.html\.gz)$">
+ForceType text/html
+</FilesMatch>
+<FilesMatch "(\.json|\.json\.gz)$">
+ForceType text/javascript
+</FilesMatch>
+<FilesMatch "(\.js|\.js\.gz)$">
+ForceType text/javascript
+</FilesMatch>
+<FilesMatch "(\.css|\.css\.gz)$">
+ForceType text/css
+</FilesMatch>
+<FilesMatch "(\.svg|\.svg\.gz)$">
+ForceType image/svg+xml
+</FilesMatch>

@@ -1,0 +1,16 @@
+{
+	"wifi": {
+		"wifissid": "RegularWifi",
+		"wifiPassword": "allemenshen"
+	},
+	"modes": {
+		"is_sensor_sync": "false"
+	},
+	"floodCalib": {
+		"baseAssocDistToWater": "30",
+		"baseWaterLvl": "1",
+		"flevelA": "10",
+		"flevelB": "16",
+		"flevelC": "25"
+	}
+}
