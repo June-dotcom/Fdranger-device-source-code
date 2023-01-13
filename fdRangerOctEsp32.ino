@@ -47,10 +47,10 @@ void Wifi_disconnected(WiFiEvent_t event, WiFiEventInfo_t info) {
   isCloudConnected = false;
   Serial.println("Reconnecting...");
 
-  char* nmss_tmp = strdup(ssid_client.c_str());
-  char* pass_tmp = strdup(password_client.c_str());
+  char* ssid_local_client = strdup(ssid_client.c_str());
+  char* pass_local_client = strdup(password_client.c_str());
 
-  WiFi.begin(nmss_tmp, pass_tmp);
+  WiFi.begin(ssid_local_client, pass_local_client);
 
 }
 
@@ -70,16 +70,19 @@ void setup() {
   WiFi.onEvent(Get_IPAddress, SYSTEM_EVENT_STA_GOT_IP);
   WiFi.onEvent(Wifi_disconnected, SYSTEM_EVENT_STA_DISCONNECTED);
 
-  char* nmss_tmp = strdup(ssid_client.c_str());
-  char* pass_tmp = strdup(password_client.c_str());
+  char* ssid_local_client = strdup(ssid_client.c_str());
+  char* pass_local_client = strdup(password_client.c_str());
 
-  WiFi.begin(nmss_tmp, pass_tmp);
+  WiFi.begin(ssid_local_client, pass_local_client);
   WiFi.persistent(true);
 
   Serial.println("Pass 2 setup");
 
   globalRGBLoading();
-  init_hc_ultr_pins();
+
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+
   globalRGBOnset();
   Serial.println("Pass 3 setup");
   delay(500);
@@ -99,8 +102,6 @@ void setup() {
   xTaskCreatePinnedToCore(Task3code, "Task3", 10000, NULL, 3, &Task3, 1);
   delay(500);
 
-  Serial.println("FreeRTOS init! Done!!!");
-
 
 }
 // primary tasks the webserver running only in core 0
@@ -113,12 +114,7 @@ void Task1code( void * parameter ) {
 
   }
 }
-//setGreenColorRGB
-//setBlueColorRGB
-//setMagentaColorRGB
-//setYellowColorRGB
-//setWhiteColorRGB
-//setRedColorRGB
+
 // secondary tasks and tertiary tasks running in core 1
 void Task2code(void * parameter ) {
   Serial.print("Task 2 running on check sync");

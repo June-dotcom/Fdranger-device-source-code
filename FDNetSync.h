@@ -66,10 +66,7 @@ void checkConnectionStatusWiFiTask() {
   WiFi.reconnect();
 }
 
-//short fld_alert_cm_flevel_A = 0;
-//short fld_warning_cm_flevel_B = 0;
-//short fld_severe_fld_cm_flevel_C = 0;
-// send alert a b c to web
+
 
 // send this alert once
 void syncAlertMeasCm() {

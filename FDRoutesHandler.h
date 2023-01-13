@@ -25,10 +25,7 @@ void set_recal() {
     String setflevelBTmp = server.arg("flevel_b").c_str();
     String setflevelCTmp = server.arg("flevel_c").c_str();
 
-    // setVarSpfs("baseWaterLvl", setBaseWaterlvlTmp);
-    // setVarSpfs("flevelA", setflevelATmp);
-    // setVarSpfs("flevelB", setflevelBTmp);
-    // setVarSpfs("flevelC", setflevelCTmp);
+
     if (setBaseWaterlvlTmp != "") {
       updateJsonDocSingleVar("profiles", "floodCalib", "baseAssocDistToWater", String(sensor_dist_out_cm));
       updateJsonDocSingleVar("profiles", "floodCalib", "baseWaterLvl", setBaseWaterlvlTmp);
@@ -57,18 +54,8 @@ void set_wifi_creds() {
   if (server.method() == HTTP_POST) {
     String wifissid_tmp = server.arg("wifissid").c_str();
     String wifipass_tmp = server.arg("wifipass").c_str();
-    Serial.println(wifissid_tmp);
-    Serial.println(wifipass_tmp);
-    //    if (wifissid_tmp != "") {
     updateJsonDocSingleVar("profiles", "wifi", "wifissid", wifissid_tmp);
-    //    }
-
-    //    if (wifipass_tmp != "") {
     updateJsonDocSingleVar("profiles", "wifi", "wifiPassword", wifipass_tmp);
-    //    }
-    // setVarSpfs("wifissid", server.arg("wifissid").c_str());
-    // setVarSpfs("wifiPassword", server.arg("password").c_str());
-
     server.sendHeader("Location", "/changes_complt.html", true);
     server.send(302, "text/plane", "");
   }
@@ -111,17 +98,7 @@ void handler_set_mode_sensor_sync() {
 
   }
 }
-void handler_locked() {
-  server.send(200, "text/plane", "settings locked");
-}
 
-void handler_discon_lock() {
-  server.send(200, "text/html", "<!DOCTYPE html><title>Disconnected</title>Disconnected to" + ssid_client + " <br><a href=\"connect_wifi.html\">Connect to wifi</a>");
-}
-
-void handler_setup_lock() {
-  server.send(200, "text/html", "<!DOCTYPE html><title>Setup mode</title>Setup mode <br><a href=\"setup.html\">Go to setup</a>");
-}
 
 
 // for sensor settings start .html
@@ -142,14 +119,7 @@ void handler_get_set_strt_snsr() {
 
 }
 
-// get conn status
-// void handler_get_vars_json(){
-//   String json_out_log = "";
-//   StaticJsonDocument<256> var_doc_index = getJSONdoc(server.arg("file"));
-//   serializeJson(var_doc_index, json_out_log);
-//
-// server.send(200, "text/plane", json_out_log);
-// }
+
 // for index.html system summary
 void handler_get_vars_index() {
   String json_out_log;
@@ -174,9 +144,6 @@ void handler_get_vars_index() {
   // additionals
   var_index_docs["is_water_overflow"] = isWaterOverflow;
 
-  // time and epochs current ntp
-  var_index_docs["ntp_epoch_time"] = ntp_epoch_time;
-  var_index_docs["ntp_formatted_time"] = ntp_formatted_time;
 
   serializeJson(var_index_docs, json_out_log);
   server.send(200, "text/plane", json_out_log);

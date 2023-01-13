@@ -10,7 +10,6 @@ String readSpfsModStr(String file_name, String file_type) {
   while (fsreader.available()) {
     output += String(char(fsreader.read()));
   }
-  //  output.replace("\"", "\\\"");
   fsreader.close();
   return output;
 }
@@ -35,10 +34,4 @@ void updateJsonDocSingleVar(String json_file_name, String entity, String key, St
   Serial.println(ret_json_str);
   writeSpfsModStr(ret_json_str, json_file_name, "json");
 }
-//
-//StaticJsonDocument<256> getJSONdoc(String json_file){
-//	String ret_json_var = readSpfsModStr(json_file, "json");
-//	StaticJsonDocument<256> ret_doc;
-//	deserializeJson(ret_doc, ret_json_var);
-//	return ret_doc;
-//}
+

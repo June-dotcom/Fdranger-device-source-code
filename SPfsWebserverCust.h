@@ -7,7 +7,7 @@ bool loadFromSpiffs(String path)
   String dataType = "text/plain";
 
   if (path.endsWith("/")){
-      path += "index.html";
+      path += "index.html.gz";
   }
 
   if (path.endsWith(".src"))

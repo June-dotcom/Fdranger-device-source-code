@@ -1,10 +1,5 @@
-//setGreenColorRGB
-//setBlueColorRGB
-//setMagentaColorRGB
-//setYellowColorRGB
-//setWhiteColorRGB
-//setOrangeColorRGB
-//setRedColorRGB
+// Flood ranger sensors 
+
 
 
 long microsecondsToCms(long microseconds) {
@@ -21,7 +16,7 @@ bool evaluateOverflow(long dist_water_level_tmp) {
   return result_tmp;
 }
 
-
+// flood ranger main process
 void sensorHCChnEd() {
 
   long duration, dist_cm;
@@ -37,14 +32,15 @@ void sensorHCChnEd() {
   dist_cm = microsecondsToCms(duration);
 
   long distance_to_obj = dist_cm;
+  // 2 cm to 400cm
   if (distance_to_obj > 2 && distance_to_obj < 400) {
     // distance obj is the final here so eather display
     sensor_dist_out_cm = distance_to_obj;
     // calculate water level
     int sensor_dist_out_diff = prev_sens_out - sensor_dist_out_cm;
     water_level_out_cm =  (base_water_dist_assoc_cm - sensor_dist_out_cm) + base_water_level_cm;
-    //    evaluate_alert_status(water_level_out_cm);
-  
+
+    // set current flood alert level  
     isWaterOverflow = evaluateOverflow(sensor_dist_out_cm);
     fldlvl_curr = evaluate_alert_status(water_level_out_cm);
 
@@ -53,7 +49,6 @@ void sensorHCChnEd() {
         String fldlvl_tmp;
         fldlvl_tmp = fldlvl_curr;
         sendOverflowStatus(isWaterOverflow);
-
         sendtoserverWaterLevel(water_level_out_cm, fldlvl_tmp);
       }
     }

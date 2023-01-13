@@ -63,8 +63,6 @@ void setterRGBAlertStat() {
 void ledTaskRealtimeInit() {
   setterRGBSensorSync();
   setterRGBAlertStat();
-  //  setOrangeColorRGB(4);
-
   setterRGBCloudStatus();
   setterRGBConnStatus();
 }

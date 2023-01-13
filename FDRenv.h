@@ -1,14 +1,11 @@
-
-
-// Define FREERTOSa
+// Define FREERTOS tasks
 TaskHandle_t Task1;
 TaskHandle_t Task2;
 TaskHandle_t Task3;
 
-
 // global variables
 
-// FdRanger0xSetup
+// FdRanger0xSetup ESP32urdfld0x
 const char* ssid_ap = "ESP32urdfld01";
 const char* password_ap = "FDrangerI0T12";
 
@@ -37,17 +34,12 @@ const char* host = "http://floodranger.xyz/";
 String ssid_client;
 String password_client;
 
-char* ssid_client_tmp;
-char* password_client_tmp;
-
 // calibs entity
 int base_water_level_cm = 0;
 int base_water_dist_assoc_cm = 0;
 int fld_alert_cm_flevel_A = 0;
 int fld_warning_cm_flevel_B = 0;
 int fld_severe_fld_cm_flevel_C = 0;
-
-
 
 bool isCloudConnected = false;
 bool isWiFiConnected = false;
@@ -62,9 +54,7 @@ bool isWaterOverflow = false;
 // for sensor ultrasonic water level
 int water_level_out_cm = 0;
 int sensor_dist_out_cm = 0;
-int prev_water_level_out = 0;
 int prev_sens_out = 0;
-int dist_to_obj_total_tmp = 0;
 
 // for signal status
 String signal_strength_wifi_rssi;
@@ -72,11 +62,6 @@ String signal_strength_wifi_remarks;
 
 // for profiles json temps
 String profiles_json;
-
-// current time NTP
-String ntp_epoch_time;
-String ntp_formatted_time;
-
 
 // rgb led pins
 // un dos tre quat

@@ -4,7 +4,6 @@ void init_routes_spfsWebserver() {
 
   server.on("/", handler_root_page);
 
-
   // settings_wifi.html onsubmit
   server.on("/submit_wifi_settings", set_wifi_creds);
 
@@ -22,7 +21,6 @@ void init_routes_spfsWebserver() {
 
   // fetch device_info.html
   server.on("/show_device_info_json", handler_get_vars_device);
-  
 
   // fetch mode sensor_sync settings.html
   server.on("/get_device_sensor_mode", handler_get_set_strt_snsr);

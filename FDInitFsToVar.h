@@ -5,13 +5,13 @@
 
 
 void init_preset_fs_to_var() {
-  // change single file to JSON
-  // if(setupmode)
 
+  // change single file to JSON
   profiles_json = readSpfsModStr("profiles", "json");
   DynamicJsonDocument profiles(1024);
   deserializeJson(profiles, profiles_json);
 
+  // wifi credentials ent
   const char* ssid_client_out = profiles["wifi"]["wifissid"];
   const char* password_client_out = profiles["wifi"]["wifiPassword"];
   const char* is_sensor_sync_chars = profiles["modes"]["is_sensor_sync"];
@@ -19,11 +19,8 @@ void init_preset_fs_to_var() {
   ssid_client = ssid_client_out;
   password_client = password_client_out;
   
-//  ssid_client_tmp = (char*)ssid_client_out;
-//  password_client_tmp = (char*)password_client_out;
-  //  ssid_client_tmp = ssid_client_out;
-  //  password_client_tmp = password_client_out;
   const String is_sensor_sync_chars_tmp = is_sensor_sync_chars;
+
   if (is_sensor_sync_chars_tmp == "true") {
     isSnsrSyncEnabled = true;
   } else {
