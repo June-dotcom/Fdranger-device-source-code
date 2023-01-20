@@ -29,7 +29,6 @@ void Wifi_connected(WiFiEvent_t event, WiFiEventInfo_t info) {
   isWiFiConnected = true;
 
   Serial.println("ESP32 WIFI Connected to Access Point");
-  setSignalStrength();
 
 }
 
@@ -110,6 +109,7 @@ void Task1code( void * parameter ) {
   Serial.println(xPortGetCoreID());
   for (;;) {
     server.handleClient();
+    
     vTaskDelay(15);
 
   }
@@ -121,6 +121,7 @@ void Task2code(void * parameter ) {
   for (;;) {
     ledTaskRealtimeInit();
     if (isWiFiConnected == true) {
+            setSignalStrength();
       setConnectionSyncStatus();
       syncAlertMeasCm();
     }

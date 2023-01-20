@@ -32,7 +32,7 @@ void sensorHCChnEd() {
   dist_cm = microsecondsToCms(duration);
 
   long distance_to_obj = dist_cm;
-  // 2 cm to 400cm
+  // 2 cm to 400cm detection range
   if (distance_to_obj > 2 && distance_to_obj < 400) {
     // distance obj is the final here so eather display
     sensor_dist_out_cm = distance_to_obj;
@@ -43,15 +43,17 @@ void sensorHCChnEd() {
     // set current flood alert level  
     isWaterOverflow = evaluateOverflow(sensor_dist_out_cm);
     fldlvl_curr = evaluate_alert_status(water_level_out_cm);
-
+  
     if (abs(sensor_dist_out_diff) >= 1) {
       if (isSnsrSyncEnabled == true && WiFi.status() == WL_CONNECTED) {
         String fldlvl_tmp;
         fldlvl_tmp = fldlvl_curr;
         sendOverflowStatus(isWaterOverflow);
         sendtoserverWaterLevel(water_level_out_cm, fldlvl_tmp);
+        prev_sens_out = sensor_dist_out_cm;
+      }else{
+        prev_sens_out = 0;
       }
     }
-    prev_sens_out = sensor_dist_out_cm;
   }
 }

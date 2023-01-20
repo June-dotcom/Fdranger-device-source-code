@@ -6,18 +6,21 @@ TaskHandle_t Task3;
 // global variables
 
 // FdRanger0xSetup ESP32urdfld0x
-const char* ssid_ap = "ESP32urdfld01";
+const char* ssid_ap = "ESP32urdfld02";
 const char* password_ap = "FDrangerI0T12";
 
 // URDFLD0x
-const String device_api_key = "URDFLD01";
+const String device_api_key = "URDFLD02";
 
 // CHANGE TO URDULTRSNR0x
-const String ultr_sensor_id = "URDULTRSNR01";
+const String ultr_sensor_id = "URDULTRSNR02";
 
 // change river
-const String device_name = "Macalong River";
-const String device_desc = "Floodranger in Macalong river";
+//const String device_name = "Macalong River";
+const String device_name = "Mitura River";
+const String device_desc = "Floodranger in Mitura river";
+
+//const String device_desc = "Floodranger in Macalong river";
 // for sensor flood level remarks snyc
 // for archival proccess
 const char* fldlvl_a_rmk_id = "FLDLVLA";
