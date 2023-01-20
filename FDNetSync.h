@@ -1,14 +1,14 @@
 String evaluate_alert_status(int value) {
   String ret_val = "FLDNRML";
-  if ((value > fld_alert_cm_flevel_A) && (value < fld_warning_cm_flevel_B) && (value  < fld_severe_fld_cm_flevel_C)) {
+  if ((value >= fld_alert_cm_flevel_A) && (value < fld_warning_cm_flevel_B) && (value  < fld_severe_fld_cm_flevel_C)) {
     ret_val = "FLDLVLA";
-  } else if ((value > fld_alert_cm_flevel_A) && (value > fld_warning_cm_flevel_B) && (value < fld_severe_fld_cm_flevel_C)) {
+  } else if ((value >= fld_alert_cm_flevel_A) && (value >= fld_warning_cm_flevel_B) && (value < fld_severe_fld_cm_flevel_C)) {
     ret_val = "FLDLVLB";
-  } else if ((value > fld_alert_cm_flevel_A) && (value > fld_warning_cm_flevel_B) && (value  > fld_severe_fld_cm_flevel_C)) {
+  } else if ((value >= fld_alert_cm_flevel_A) && (value >= fld_warning_cm_flevel_B) && (value  >= fld_severe_fld_cm_flevel_C)) {
     ret_val = "FLDLVLC";
   } else if ((value < fld_alert_cm_flevel_A) && (value < fld_warning_cm_flevel_B) && (value  < fld_severe_fld_cm_flevel_C)) {
     ret_val = "FLDNRML";
-  }
+  } 
   return ret_val;
 }
 
