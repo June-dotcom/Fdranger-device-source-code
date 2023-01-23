@@ -17,10 +17,11 @@ const String ultr_sensor_id = "URDULTRSNR02";
 
 // change river
 //const String device_name = "Macalong River";
+//const String device_desc = "Floodranger in Macalong river";
+
 const String device_name = "Mitura River";
 const String device_desc = "Floodranger in Mitura river";
 
-//const String device_desc = "Floodranger in Macalong river";
 // for sensor flood level remarks snyc
 // for archival proccess
 const char* fldlvl_a_rmk_id = "FLDLVLA";

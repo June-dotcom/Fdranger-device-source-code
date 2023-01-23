@@ -112,7 +112,10 @@ void handler_get_set_strt_snsr() {
   var_index_docs["wifi_signal_remarks"] = signal_strength_wifi_remarks;
   var_index_docs["wifi_signal_strength"] = signal_strength_wifi_rssi;
   var_index_docs["wifi_name"] = ssid_client;
-
+  
+  var_index_docs["device_api_key"] = device_api_key;
+  var_index_docs["device_name"] = device_name;
+  var_index_docs["sensor_id"] = ultr_sensor_id;
   // require these stmt to other pages
   serializeJson(var_index_docs, json_out_log);
   server.send(200, "text/plane", json_out_log);
@@ -125,6 +128,7 @@ void handler_get_vars_index() {
   String json_out_log;
   DynamicJsonDocument var_index_docs(1024);
   // require these stmt to other pages
+
   var_index_docs["conn_wifi_status"] = isWiFiConnected;
   var_index_docs["conn_cloud"] = isCloudConnected;
   var_index_docs["conn_sensor_sync"] = isSnsrSyncEnabled;
@@ -144,6 +148,10 @@ void handler_get_vars_index() {
   // additionals
   var_index_docs["is_water_overflow"] = isWaterOverflow;
 
+  // additionals added
+  var_index_docs["device_api_key"] = device_api_key;
+  var_index_docs["device_name"] = device_name;
+  var_index_docs["sensor_id"] = ultr_sensor_id;
 
   serializeJson(var_index_docs, json_out_log);
   server.send(200, "text/plane", json_out_log);
@@ -199,6 +207,11 @@ void handler_settings_wifi() {
   var_index_docs["wifi_name"] = ssid_client;
   var_index_docs["wifi_pass"] = password_client;
 
+  // additionals added
+  var_index_docs["device_api_key"] = device_api_key;
+  var_index_docs["device_name"] = device_name;
+  var_index_docs["sensor_id"] = ultr_sensor_id;
+
   serializeJson(var_index_docs, json_out_log);
   server.send(200, "text/plane", json_out_log);
 
@@ -221,6 +234,11 @@ void handler_settings_flood_calib() {
   var_index_docs["floodLvlA"] = fld_alert_cm_flevel_A;
   var_index_docs["floodLvlB"] = fld_warning_cm_flevel_B;
   var_index_docs["floodLvlC"] = fld_severe_fld_cm_flevel_C;
+
+  // additionals added
+  var_index_docs["device_api_key"] = device_api_key;
+  var_index_docs["device_name"] = device_name;
+  var_index_docs["sensor_id"] = ultr_sensor_id;
 
   serializeJson(var_index_docs, json_out_log);
   server.send(200, "text/plane", json_out_log);

@@ -66,8 +66,6 @@ void checkConnectionStatusWiFiTask() {
   WiFi.reconnect();
 }
 
-
-
 // send this alert once
 void syncAlertMeasCm() {
   HTTPClient http;
