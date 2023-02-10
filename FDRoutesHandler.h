@@ -13,7 +13,7 @@ void handler_root_page() {
 void handler_restart_device() {
   server.send(200, "text/plane" "Your device will restart for a while...Please wait...");
   Serial.println("Device initialize to restart");
-  delay(300);
+  delay(1000);
   ESP.restart();
 }
 
@@ -43,8 +43,9 @@ void set_recal() {
       updateJsonDocSingleVar("profiles", "floodCalib", "flevelC", setflevelCTmp);
     }
 
-    server.sendHeader("Location", "/changes_complt.html", true);
-    server.send(302, "text/plane", "");
+//    server.sendHeader("Location", "/changes_complt.html", true);
+//    server.send(200, "text/plane", "");
+    server.send(200, "text/html", "<!DOCTYPE html><p>You can restart the device to make changes </p><br><a class=\"btn btn-ok\" href=\"restartDeviceCommand\">Restart the device</a>&nbsp;<a class=\"btn btn-ok\" href=\"/\">Go to homepage</a>");
 
   }
 }
@@ -56,8 +57,8 @@ void set_wifi_creds() {
     String wifipass_tmp = server.arg("wifipass").c_str();
     updateJsonDocSingleVar("profiles", "wifi", "wifissid", wifissid_tmp);
     updateJsonDocSingleVar("profiles", "wifi", "wifiPassword", wifipass_tmp);
-    server.sendHeader("Location", "/changes_complt.html", true);
-    server.send(302, "text/plane", "");
+//    server.sendHeader("Location", "/changes_complt.html", true);
+    server.send(200, "text/html", "<!DOCTYPE html><p>You can restart the device to make changes </p><br><a class=\"btn btn-ok\" href=\"restartDeviceCommand\">Restart the device</a>&nbsp;<a class=\"btn btn-ok\" href=\"/\">Go to homepage</a>");
   }
 }
 
