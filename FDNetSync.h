@@ -8,7 +8,7 @@ String evaluate_alert_status(int value) {
     ret_val = "FLDLVLC";
   } else if ((value < fld_alert_cm_flevel_A) && (value < fld_warning_cm_flevel_B) && (value  < fld_severe_fld_cm_flevel_C)) {
     ret_val = "FLDNRML";
-  } 
+  }
   return ret_val;
 }
 
@@ -19,6 +19,7 @@ void sendtoserverWaterLevel(int value, String alert_status_tmp) {
   getParams = "?device_api_key=" + device_api_key + "&sensor_id=" + ultr_sensor_id + "&water_level=" + String(value) + "&fld_level_status=" + alert_status_tmp;
   address_link = host + php_file + getParams;
   http.begin(address_link);
+  http.addHeader("Authorization", auth_tken_glb);
   String httpCode = String(http.GET());
   String payload = http.getString();
   payload.trim();
@@ -34,6 +35,7 @@ void setConnectionSyncStatus() {
   get_param = "?device_api_key=" + device_api_key;
   address_link = host + php_file + get_param;
   http.begin(address_link);
+  http.addHeader("Authorization", auth_tken_glb);
   int httpCode = http.GET();
   String payload = http.getString();
   payload.trim();
@@ -78,6 +80,7 @@ void syncAlertMeasCm() {
   getParams += "&sensor_id=" + ultr_sensor_id;
   address_link = host + php_file + getParams;
   http.begin(address_link);
+  http.addHeader("Authorization", auth_tken_glb);
   int httpCode = http.GET();
   //  if (httpCode == 200) {
   //  }
@@ -99,6 +102,7 @@ void sendOverflowStatus(bool isOverFlowWater_tmp) {
   }
   address_link = host + php_file + getParams;
   http.begin(address_link);
+  http.addHeader("Authorization", auth_tken_glb);
   int httpCode = http.GET();
   if (httpCode == 200) {
   }

@@ -3,24 +3,32 @@ TaskHandle_t Task1;
 TaskHandle_t Task2;
 TaskHandle_t Task3;
 
+
 // global variables
 
 // FdRanger0xSetup ESP32urdfld0x
-const char* ssid_ap = "ESP32urdfld02";
+const char* ssid_ap = "ESP32urdfld01";
 const char* password_ap = "FDrangerI0T12";
 
+// default wifi client creds
+const String ssid_client_def = "FDRANGER1234";
+const String pass_client_def = "FDRANGER1234";
+
+const String hostname_dev = "MCLONG-URD01";
+
 // URDFLD0x
-const String device_api_key = "URDFLD02";
+const String device_api_key = "URDFLD01";
 
 // CHANGE TO URDULTRSNR0x
-const String ultr_sensor_id = "URDULTRSNR02";
+const String ultr_sensor_id = "URDULTRSNR01";
 
 // change river
-//const String device_name = "Macalong River";
-//const String device_desc = "Floodranger in Macalong river";
+const String device_name = "Macalong River";
+const String device_desc = "Floodranger in Macalong river";
 
-const String device_name = "Mitura River";
-const String device_desc = "Floodranger in Mitura river";
+const String auth_tken_glb = "xxxx xxxxxxxxx";
+//const String device_name = "Mitura River";
+//const String device_desc = "Floodranger in Mitura river";
 
 // for sensor flood level remarks snyc
 // for archival proccess
@@ -32,7 +40,7 @@ const char* fldlvl_nrml_rmk = "FLDNRML";
 // flood level alert status
 String fldlvl_curr = "FLDNRML";
 
-const char* host = "http://floodranger.xyz/";
+const char* host = "http://xxxx.xxxx/";
 
 // wifi entitiy
 String ssid_client;
@@ -95,3 +103,8 @@ const int quat_b_pin_led = 27;
 // hc ultrasonic pins
 const int trigPin = 16;
 const int echoPin = 17;
+
+
+// network reset btn pins
+const int btnetPin = 33;
+int btvalnetset;
